@@ -9,8 +9,6 @@ coverage/
 *.log.*
 *.log-*
 site/
-generate_docs.py
 *.pyc
 docs/
 *.swp
-mkdocs.yml

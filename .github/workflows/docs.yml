@@ -1,0 +1,46 @@
+name: Build and deploy docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs
+        run: pip install mkdocs mkdocs-material
+
+      - name: Assemble docs from README
+        run: |
+          mkdir -p docs
+          cp README.md docs/index.md
+          cp django.jpg docs/django.jpg
+          cp CONTRIBUTING.md docs/CONTRIBUTING.md
+
+      - name: Build site
+        run: mkdocs build --strict
+
+      # Deploy only from main; pull requests just verify that the site builds.
+      - name: Deploy to gh-pages branch
+        if: github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
