@@ -1,0 +1,724 @@
+  <!DOCTYPE html>
+<html lang="de" class="h-full bg-slate-900 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DB InfraGO - Kabeltrassen & Infrastruktur-Planer</title>
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>
+    if (window.tailwind) tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            db: {
+              red: '#f01414',
+              redhover: '#d01010',
+              dark: '#121826',
+              card: '#1e293b',
+              border: '#334155'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbars and canvas styling */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .node-pulse {
+      animation: pulse-ring 2s infinite;
+    }
+    @keyframes pulse-ring {
+      0% { r: 6; opacity: 1; }
+      50% { r: 12; opacity: 0.3; }
+      100% { r: 6; opacity: 1; }
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col font-sans overflow-hidden bg-slate-950 text-slate-100">
+
+  <!-- Top Bar / Navigation Header -->
+  <header class="h-14 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-4 z-20 shrink-0">
+    <div class="flex items-center space-x-3">
+      <div class="bg-db-red text-white font-black px-2.5 py-1 rounded text-sm tracking-wider shadow-md flex items-center gap-1.5">
+        <span>DB</span>
+        <span class="text-xs font-normal opacity-90 border-l border-white/40 pl-1.5">InfraGO</span>
+      </div>
+      <h1 class="font-bold text-sm sm:text-base tracking-wide text-slate-200">
+        Trassen- & Kabelnetz-Planung <span class="text-xs font-mono text-slate-500 bg-slate-800 px-2 py-0.5 rounded border border-slate-700/50 ml-2">v2.4-PlanPro</span>
+      </h1>
+    </div>
+
+    <!-- Role Switcher & User Profile -->
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-lg border border-slate-700/60">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+        <span class="text-xs text-slate-400 font-medium hidden sm:inline">Aktive Rolle:</span>
+        <select id="roleSelect" onchange="switchRole(this.value)" class="bg-slate-900 text-xs text-slate-200 font-semibold rounded px-2 py-1 border border-slate-700 focus:outline-none focus:border-db-red cursor-pointer">
+          <option value="ADMIN">ADMIN (Systemadministrator)</option>
+          <option value="PLANER" selected>PLANER (LST & TK Ingenieur)</option>
+          <option value="BAULEITER">BAULEITER (Bauüberwachung)</option>
+          <option value="VIEWER">VIEWER (Nur Lesezugriff)</option>
+        </select>
+      </div>
+
+      <div class="flex items-center space-x-3 border-l border-slate-800 pl-4">
+        <div class="text-right hidden md:block">
+          <div class="text-xs font-semibold text-slate-200" id="userName">Dipl.-Ing. M. Weber</div>
+          <div class="text-[10px] text-emerald-400 font-mono" id="userBadge">Berechtigung: Vollzugriff</div>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-db-red font-bold text-xs shadow">
+          MW
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace Layout -->
+  <div class="flex-1 flex overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-slate-900/95 border-r border-slate-800 flex flex-col shrink-0">
+      <div class="p-3 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+        Navigation (<span id="roleLabelDisplay" class="text-db-red">PLANER</span>)
+      </div>
+      
+      <nav class="flex-1 px-2 space-y-1 overflow-y-auto" id="sidebarMenu">
+        <!-- Menu Items dynamically rendered via JS -->
+      </nav>
+
+      <!-- System Status Footer -->
+      <div class="p-3 border-t border-slate-800/80 bg-slate-950/40 text-xs text-slate-400 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> GIS-Server</span>
+          <span class="font-mono text-[10px] text-slate-500">Online</span>
+        </div>
+        <div class="text-[10px] text-slate-500 truncate">Streckenabschnitt: STK 6100 (Km 12,4 - 18,2)</div>
+      </div>
+    </aside>
+
+    <!-- Content Display Area -->
+    <main class="flex-1 flex flex-col bg-slate-950 relative overflow-hidden">
+
+      <!-- VIEW 1: Gleis- & Trassenplaner (CAD / Map Editor) -->
+      <div id="view-trassen-editor" class="view-panel flex-1 flex flex-col h-full">
+        <!-- Toolbar -->
+        <div class="h-11 bg-slate-900/80 border-b border-slate-800 px-4 flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-xs">
+            <span class="font-semibold text-slate-300">Netzknoten:</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">Bbf Hbf West - Abzw Nord</span>
+            <span class="text-slate-600">|</span>
+            <span class="text-slate-400">Koordinatensystem: EPSG:25832 (UTM32)</span>
+          </div>
+
+          <div class="flex items-center space-x-2" id="editorActionButtons">
+            <button onclick="addNewSchacht()" class="bg-db-red hover:bg-db-redhover text-white px-2.5 py-1 rounded text-xs font-medium transition flex items-center gap-1 shadow">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+              Schacht / Schrank setzen
+            </button>
+            <button onclick="addNewTrasse()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-2.5 py-1 rounded text-xs font-medium transition flex items-center gap-1">
+              <i data-lucide="route" class="w-3.5 h-3.5 text-sky-400"></i>
+              Kabeltrasse ziehen
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Map / CAD Simulation -->
+        <div class="flex-1 flex relative">
+          <!-- SVG Canvas Map -->
+          <div class="flex-1 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4 cursor-crosshair" id="mapContainer">
+            
+            <!-- Grid Background -->
+            <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" width="100%" height="100%">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#475569" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)"/>
+            </svg>
+
+            <!-- Railway Lines & Cable Ducts SVG -->
+            <svg id="cadSvg" class="w-full h-full max-w-5xl max-h-[600px] z-10" viewBox="0 0 800 500">
+              <!-- Gleise (Bahnstrecke STK 6100) -->
+              <g id="gleise" stroke="#475569" stroke-width="4" stroke-dasharray="8 4">
+                <path d="M 50 250 Q 250 180 450 250 T 750 250" fill="none"/>
+                <path d="M 50 270 Q 250 200 450 270 T 750 270" fill="none"/>
+              </g>
+
+              <!-- Gleisbeschriftung -->
+              <text x="70" y="235" fill="#64748b" font-size="11" font-family="monospace">Gleis 1 (STK 6100)</text>
+              <text x="70" y="295" fill="#64748b" font-size="11" font-family="monospace">Gleis 2 (STK 6100)</text>
+
+              <!-- Kabeltrassen (Polylines) -->
+              <g id="trassenGroup">
+                <!-- Trasse T-101 (Haupttrasse Nord) -->
+                <path id="trasse-T-101" d="M 120 180 L 320 140 L 520 180" 
+                      fill="none" stroke="#0284c7" stroke-width="5" stroke-linecap="round" 
+                      class="hover:stroke-sky-400 cursor-pointer transition-all" onclick="selectElement('trasse', 'T-101')"/>
+                
+                <!-- Trasse T-102 (Verbindung zum Schrank) -->
+                <path id="trasse-T-102" d="M 320 140 L 320 80 L 480 80" 
+                      fill="none" stroke="#0284c7" stroke-width="4" stroke-dasharray="5 3"
+                      class="hover:stroke-sky-400 cursor-pointer transition-all" onclick="selectElement('trasse', 'T-102')"/>
+
+                <!-- Trasse T-103 (Südtrasse / Verrohrung) -->
+                <path id="trasse-T-103" d="M 120 330 L 450 330 L 680 310" 
+                      fill="none" stroke="#eab308" stroke-width="5" stroke-linecap="round"
+                      class="hover:stroke-amber-300 cursor-pointer transition-all" onclick="selectElement('trasse', 'T-103')"/>
+              </g>
+
+              <!-- Schächte, Muffen & Schränke (Knotenpunkte) -->
+              <g id="knotenGroup">
+                <!-- Schacht SCH-01 -->
+                <g transform="translate(120, 180)" class="cursor-pointer group" onclick="selectElement('schacht', 'SCH-01')">
+                  <rect x="-12" y="-12" width="24" height="24" fill="#0f172a" stroke="#38bdf8" stroke-width="2" rx="3" class="group-hover:stroke-white transition"/>
+                  <text x="-8" y="4" fill="#38bdf8" font-size="10" font-weight="bold">S1</text>
+                  <title>Kabelschacht SCH-01 (Beton Gr. 2)</title>
+                </g>
+
+                <!-- Abzweigschacht SCH-02 -->
+                <g transform="translate(320, 140)" class="cursor-pointer group" onclick="selectElement('schacht', 'SCH-02')">
+                  <circle r="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2" class="group-hover:stroke-white transition"/>
+                  <text x="-8" y="4" fill="#38bdf8" font-size="10" font-weight="bold">S2</text>
+                  <title>Ziehmuffenschacht SCH-02</title>
+                </g>
+
+                <!-- Schacht SCH-03 -->
+                <g transform="translate(520, 180)" class="cursor-pointer group" onclick="selectElement('schacht', 'SCH-03')">
+                  <rect x="-12" y="-12" width="24" height="24" fill="#0f172a" stroke="#38bdf8" stroke-width="2" rx="3" class="group-hover:stroke-white transition"/>
+                  <text x="-8" y="4" fill="#38bdf8" font-size="10" font-weight="bold">S3</text>
+                </g>
+
+                <!-- Muffenschrank MS-01 (LST Signalkoppler) -->
+                <g transform="translate(480, 80)" class="cursor-pointer group" onclick="selectElement('schrank', 'MS-01')">
+                  <polygon points="0,-14 14,10 -14,10" fill="#f01414" stroke="#ffffff" stroke-width="1.5" class="group-hover:scale-110 transition origin-center"/>
+                  <text x="18" y="4" fill="#f87171" font-size="11" font-weight="bold">MS-01 (LST)</text>
+                </g>
+
+                <!-- Kabelmuffe M-201 -->
+                <g transform="translate(300, 330)" class="cursor-pointer group" onclick="selectElement('muffe', 'M-201')">
+                  <circle r="7" fill="#eab308" stroke="#ffffff" stroke-width="1.5" class="node-pulse"/>
+                  <text x="-12" y="20" fill="#fde047" font-size="10" font-weight="bold">Muffe M-201</text>
+                </g>
+              </g>
+            </svg>
+
+            <!-- Map Controls Overlay -->
+            <div class="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur border border-slate-800 p-2 rounded-lg text-xs space-y-1.5 shadow-xl text-slate-300">
+              <div class="font-semibold text-slate-400 border-b border-slate-800 pb-1 text-[11px] uppercase">Legende (DB InfraGO Standard)</div>
+              <div class="flex items-center gap-2"><span class="w-3 h-3 bg-sky-500 rounded-sm inline-block"></span> Betonkabelkanal (LST)</div>
+              <div class="flex items-center gap-2"><span class="w-3 h-3 bg-amber-500 rounded-sm inline-block"></span> HDPE-Rohrverband (TK / LWL)</div>
+              <div class="flex items-center gap-2"><span class="w-3 h-3 border-2 border-sky-400 bg-slate-900 rounded-sm inline-block"></span> Kabelschacht / Ziehscharte</div>
+              <div class="flex items-center gap-2"><span class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-db-red inline-block"></span> Muffenschrank / Koppelpunkt</div>
+            </div>
+          </div>
+
+          <!-- Element Inspector Side Panel -->
+          <div class="w-80 bg-slate-900 border-l border-slate-800 p-4 flex flex-col justify-between overflow-y-auto" id="inspectorPanel">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+                <h3 class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                  <i data-lucide="info" class="w-4 h-4 text-sky-400"></i>
+                  <span id="inspectorTitle">Objekt-Inspektor</span>
+                </h3>
+                <span class="text-[10px] bg-sky-950 text-sky-300 border border-sky-800 px-2 py-0.5 rounded font-mono" id="inspectorType">GEO-OBJECT</span>
+              </div>
+
+              <!-- Inspector Details Dynamic Form -->
+              <div id="inspectorContent" class="space-y-3 text-xs">
+                <p class="text-slate-400 italic text-center py-8">Klicken Sie auf ein Element in der Karte (Schacht, Trasse oder Muffenschrank), um Eigenschaften anzuzeigen.</p>
+              </div>
+            </div>
+
+            <!-- Role Restricted Action Footer -->
+            <div id="inspectorActions" class="border-t border-slate-800 pt-3 mt-4 space-y-2">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 2: Kabel- & Muffenkatalog (Table View) -->
+      <div id="view-kabel-katalog" class="view-panel hidden flex-1 p-6 overflow-y-auto space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-100">Kabel- & Komponenten-Katalog</h2>
+            <p class="text-xs text-slate-400">Übersicht aller projektierten Leitungen, Spleißboxen und Verrohrungen im Streckenabschnitt.</p>
+          </div>
+          <button id="btnNewKabel" onclick="alert('Neues Kabel anlegen (Funktion im Planer-Modus aktiv)')" class="bg-db-red hover:bg-db-redhover text-white px-3 py-1.5 rounded text-xs font-semibold shadow flex items-center gap-1.5">
+            <i data-lucide="plus" class="w-4 h-4"></i> Kabel hinzufügen
+          </button>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-800/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-700">
+              <tr>
+                <th class="p-3">Kabel-ID / Belegungsbezeichnung</th>
+                <th class="p-3">Gewerk</th>
+                <th class="p-3">Kabeltyp (DB-Klassifizierung)</th>
+                <th class="p-3">Durchmesser</th>
+                <th class="p-3">Verlauf (Von ➔ Bis)</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Aktionen</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr class="hover:bg-slate-800/40">
+                <td class="p-3 font-mono text-sky-400 font-semibold">KBL-LST-0081</td>
+                <td class="p-3"><span class="bg-red-950 text-red-300 border border-red-800 px-2 py-0.5 rounded text-[10px]">LST Signal</span></td>
+                <td class="p-3">A-2YF(L)2Y 1x4x0.9 (Signal)</td>
+                <td class="p-3 font-mono">18.5 mm</td>
+                <td class="p-3 text-slate-400">SCH-01 ➔ MS-01</td>
+                <td class="p-3"><span class="text-emerald-400 flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> Genehmigt</span></td>
+                <td class="p-3 text-right space-x-1 action-cell">
+                  <button class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-slate-300">Edit</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="p-3 font-mono text-sky-400 font-semibold">KBL-TK-9012</td>
+                <td class="p-3"><span class="bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded text-[10px]">TK / LWL</span></td>
+                <td class="p-3">A-DQ(ZN)2Y 96G (LWL-Glasfaser)</td>
+                <td class="p-3 font-mono">12.0 mm</td>
+                <td class="p-3 text-slate-400">SCH-01 ➔ SCH-03</td>
+                <td class="p-3"><span class="text-amber-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> In Prüfung</span></td>
+                <td class="p-3 text-right space-x-1 action-cell">
+                  <button class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-slate-300">Edit</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-800/40">
+                <td class="p-3 font-mono text-sky-400 font-semibold">KBL-E50-0042</td>
+                <td class="p-3"><span class="bg-blue-950 text-blue-300 border border-blue-800 px-2 py-0.5 rounded text-[10px]">50Hz Energie</span></td>
+                <td class="p-3">NA2XS2Y 1x150 RM/25 20kV</td>
+                <td class="p-3 font-mono">34.0 mm</td>
+                <td class="p-3 text-slate-400">SCH-02 ➔ M-201</td>
+                <td class="p-3"><span class="text-emerald-400 flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> Genehmigt</span></td>
+                <td class="p-3 text-right space-x-1 action-cell">
+                  <button class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-slate-300">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW 3: Baufortschritt (Bauleiter Focus) -->
+      <div id="view-baufortschritt" class="view-panel hidden flex-1 p-6 overflow-y-auto space-y-6">
+        <div>
+          <h2 class="text-lg font-bold text-slate-100">Baufortschritt & Überwachung (Kabeltiefbau)</h2>
+          <p class="text-xs text-slate-400">Rückmeldung der Bauüberwachung zur Fertigstellung vor Ort.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="text-xs text-slate-400 font-medium">Tiefgraben & Trassenbau</div>
+            <div class="text-2xl font-bold text-slate-100 mt-1">1.240 m / 1.800 m</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-emerald-500 h-full w-[68%]"></div>
+            </div>
+            <div class="text-[10px] text-slate-500 mt-1 text-right">68% abgeschlossen</div>
+          </div>
+
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="text-xs text-slate-400 font-medium">Schachtmontage</div>
+            <div class="text-2xl font-bold text-slate-100 mt-1">14 / 18 Schächte</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-sky-500 h-full w-[77%]"></div>
+            </div>
+            <div class="text-[10px] text-slate-500 mt-1 text-right">77% gesetzt</div>
+          </div>
+
+          <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+            <div class="text-xs text-slate-400 font-medium">Kabeleinzug & Spleißarbeiten</div>
+            <div class="text-2xl font-bold text-slate-100 mt-1">450 m / 2.100 m</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-amber-500 h-full w-[21%]"></div>
+            </div>
+            <div class="text-[10px] text-slate-500 mt-1 text-right">21% eingezogen</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <h3 class="font-bold text-sm text-slate-200 mb-3">Bauleiter Bautagesbericht-Freigabe</h3>
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-semibold text-slate-200">Kabeltrasse T-101 (Betongrubenkanal)</span>
+                <span class="text-slate-400 text-[11px] block">Aushub erfolgt, Abdeckung verlegt am 02.10.2026.</span>
+              </div>
+              <button onclick="alert('Bauabschnitt als abgenommen markiert')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-xs">
+                Abnahme quittieren
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 4: Exporte (PlanPro & GeoJSON) -->
+      <div id="view-exporte" class="view-panel hidden flex-1 p-6 overflow-y-auto space-y-4">
+        <div>
+          <h2 class="text-lg font-bold text-slate-100">Datenexport & Schnittstellen</h2>
+          <p class="text-xs text-slate-400">Exportieren Sie den aktuellen Trassen- und Leitungsbestand nach DB InfraGO Standards.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-lg space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 bg-db-red/10 border border-db-red/30 rounded-lg text-db-red">
+                <i data-lucide="file-code" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-slate-200">PlanPro XML Schema (LST)</h3>
+                <p class="text-xs text-slate-400">Offizielles XML-Austauschformat der Deutschen Bahn für Sicherungstechnik.</p>
+              </div>
+            </div>
+            <button onclick="triggerExport('PlanPro XML')" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded text-xs font-semibold transition flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i> PlanPro XML Generieren (.xml)
+            </button>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-lg space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 bg-sky-500/10 border border-sky-500/30 rounded-lg text-sky-400">
+                <i data-lucide="map" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-slate-200">GeoJSON / GIS Export</h3>
+                <p class="text-xs text-slate-400">Für die Integration in Esri ArcGIS, QGIS oder DB GIS-Systeme.</p>
+              </div>
+            </div>
+            <button onclick="triggerExport('GeoJSON')" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded text-xs font-semibold transition flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i> GeoJSON Exportieren (.json)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 5: Systemverwaltung (Admin Only) -->
+      <div id="view-admin" class="view-panel hidden flex-1 p-6 overflow-y-auto space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-100">Systemverwaltung & Rechteverwaltung</h2>
+            <p class="text-xs text-slate-400">Exklusiver Bereich für Administratoren.</p>
+          </div>
+          <span class="bg-red-950 text-red-300 border border-red-800 px-2.5 py-1 rounded text-xs font-mono">Nur ADMIN</span>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 space-y-4">
+          <h3 class="font-bold text-sm text-slate-200">Benutzerverwaltung & Rollenzuweisung</h3>
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-slate-200">Dipl.-Ing. M. Weber</div>
+                <div class="text-slate-400 text-[11px]">m.weber@infrago.db.de</div>
+              </div>
+              <span class="px-2 py-0.5 bg-sky-950 text-sky-300 border border-sky-800 rounded font-mono text-[10px]">PLANER</span>
+            </div>
+            <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-slate-200">H. Richter (Bauüberwachung)</div>
+                <div class="text-slate-400 text-[11px]">h.richter@bau-partner.de</div>
+              </div>
+              <span class="px-2 py-0.5 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded font-mono text-[10px]">BAULEITER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- JavaScript App Logic -->
+  <script>
+    // Icons: Lucide kommt von einem CDN. Fällt es aus, läuft die App ohne Icons weiter.
+    function refreshIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.refreshIcons();
+      }
+    }
+
+    // State Management
+    let currentRole = 'PLANER';
+    let currentView = 'trassen-editor';
+    let selectedElementData = null;
+
+    // Menu Configuration (Matching the role-based design)
+    const MENU_CONFIG = [
+      {
+        id: 'trassen-editor',
+        label: 'Gleis- & Trassenplaner',
+        icon: 'map',
+        roles: ['ADMIN', 'PLANER', 'BAULEITER', 'VIEWER']
+      },
+      {
+        id: 'kabel-katalog',
+        label: 'Kabel- & Muffenkatalog',
+        icon: 'layers',
+        roles: ['ADMIN', 'PLANER', 'VIEWER']
+      },
+      {
+        id: 'baufortschritt',
+        label: 'Baufortschritt (Tiefbau)',
+        icon: 'hard-hat',
+        roles: ['ADMIN', 'BAULEITER'],
+        badge: 'Live'
+      },
+      {
+        id: 'exporte',
+        label: 'PlanPro / GIS-Export',
+        icon: 'download',
+        roles: ['ADMIN', 'PLANER', 'BAULEITER']
+      },
+      {
+        id: 'admin',
+        label: 'Systemverwaltung',
+        icon: 'settings',
+        roles: ['ADMIN']
+      }
+    ];
+
+    // Data Store for CAD Elements
+    const INFRA_DATA = {
+      'SCH-01': {
+        id: 'SCH-01',
+        type: 'Schacht',
+        bezeichnung: 'Kabelschacht SCH-01',
+        bauart: 'Betonschacht Gr. 2 (DB Standard)',
+        km: '12,410',
+        abmessung: '150 x 100 x 120 cm',
+        belegung: '3 von 6 Rohre belegt',
+        gewerk: 'LST / TK'
+      },
+      'SCH-02': {
+        id: 'SCH-02',
+        type: 'Schacht',
+        bezeichnung: 'Ziehmuffenschacht SCH-02',
+        bauart: 'Kunststoff GreenTrough (Leichtbau)',
+        km: '12,650',
+        abmessung: '100 x 80 x 90 cm',
+        belegung: '2 von 4 Rohre belegt',
+        gewerk: 'LST'
+      },
+      'T-101': {
+        id: 'T-101',
+        type: 'Kabeltrasse',
+        bezeichnung: 'Haupttrasse Nord (Betongrubenkanal)',
+        bauart: 'Kabelkanal Typ IIIa mit Abdeckstein',
+        laenge: '200,0 m',
+        kapazitaet: '60% Auslastung',
+        gewerk: 'LST / 50Hz'
+      },
+      'MS-01': {
+        id: 'MS-01',
+        type: 'Muffenschrank',
+        bezeichnung: 'Muffenschrank MS-01 (LST)',
+        bauart: 'GfK-Schrank mit Schwenkrahmen & Spleißkassette',
+        km: '12,650 (Gleisnetz rechts)',
+        belegung: '12 Spleißverbindungen',
+        gewerk: 'LST Signaltechnik'
+      },
+      'M-201': {
+        id: 'M-201',
+        type: 'Muffe',
+        bezeichnung: 'Durchgangsmuffe M-201',
+        bauart: 'Gelmuffe 1kV / LST',
+        km: '12,580',
+        gewerk: '50Hz Energie'
+      }
+    };
+
+    // Initialize App on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNavigation();
+      switchRole('PLANER');
+      refreshIcons();
+    });
+
+    // Render Role-Filtered Navigation
+    function renderNavigation() {
+      const menuContainer = document.getElementById('sidebarMenu');
+      menuContainer.innerHTML = '';
+
+      const filteredItems = MENU_CONFIG.filter(item => item.roles.includes(currentRole));
+
+      filteredItems.forEach(item => {
+        const isActive = item.id === currentView;
+        const button = document.createElement('button');
+        button.className = `w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition ${
+          isActive 
+            ? 'bg-db-red text-white shadow-md' 
+            : 'text-slate-400 hover:bg-slate-800/80 hover:text-slate-200'
+        }`;
+        button.onclick = () => switchView(item.id);
+
+        button.innerHTML = `
+          <div class="flex items-center space-x-2.5">
+            <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+            <span>${item.label}</span>
+          </div>
+          ${item.badge ? `<span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[9px] px-1.5 py-0.5 rounded font-bold">${item.badge}</span>` : ''}
+        `;
+
+        menuContainer.appendChild(button);
+      });
+
+      refreshIcons();
+    }
+
+    // Role Switching Logic
+    function switchRole(role) {
+      currentRole = role;
+      document.getElementById('roleLabelDisplay').innerText = role;
+
+      // Update User Profile Badge in Topbar
+      const userBadge = document.getElementById('userBadge');
+      if (role === 'ADMIN') userBadge.innerText = 'Systemadministrator';
+      if (role === 'PLANER') userBadge.innerText = 'LST-Planungsingenieur';
+      if (role === 'BAULEITER') userBadge.innerText = 'Bauüberwachung Vor-Ort';
+      if (role === 'VIEWER') userBadge.innerText = 'Nur Lesezugriff (Gast)';
+
+      // Check if current view is permitted for new role; if not, fallback to first available
+      const permittedViews = MENU_CONFIG.filter(i => i.roles.includes(role)).map(i => i.id);
+      if (!permittedViews.includes(currentView)) {
+        currentView = permittedViews[0];
+      }
+
+      // Hide or show Editor action buttons based on role
+      const editorButtons = document.getElementById('editorActionButtons');
+      if (editorButtons) {
+        if (role === 'ADMIN' || role === 'PLANER') {
+          editorButtons.classList.remove('hidden');
+        } else {
+          editorButtons.classList.add('hidden');
+        }
+      }
+
+      // Hide or show Add Cable Button
+      const btnNewKabel = document.getElementById('btnNewKabel');
+      if (btnNewKabel) {
+        if (role === 'ADMIN' || role === 'PLANER') {
+          btnNewKabel.classList.remove('hidden');
+        } else {
+          btnNewKabel.classList.add('hidden');
+        }
+      }
+
+      // Refresh Navigation and Views
+      renderNavigation();
+      switchView(currentView);
+      if (selectedElementData) {
+        renderInspectorActions();
+      }
+    }
+
+    // View Switching Logic
+    function switchView(viewId) {
+      currentView = viewId;
+      renderNavigation();
+
+      document.querySelectorAll('.view-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      const activePanel = document.getElementById(`view-${viewId}`);
+      if (activePanel) {
+        activePanel.classList.remove('hidden');
+      }
+    }
+
+    // Interactive Element Selection on Map
+    function selectElement(category, id) {
+      const data = INFRA_DATA[id];
+      if (!data) return;
+
+      selectedElementData = data;
+
+      document.getElementById('inspectorTitle').innerText = data.bezeichnung;
+      document.getElementById('inspectorType').innerText = data.type.toUpperCase();
+
+      const content = document.getElementById('inspectorContent');
+      content.innerHTML = `
+        <div class="space-y-2">
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
+            <span class="text-slate-500 text-[10px] block">Bauart / Typ</span>
+            <span class="font-semibold text-slate-200">${data.bauart}</span>
+          </div>
+
+          ${data.km ? `
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
+            <span class="text-slate-500 text-[10px] block">Streckenkilometrierung</span>
+            <span class="font-mono text-sky-400 font-bold">km ${data.km}</span>
+          </div>` : ''}
+
+          ${data.laenge ? `
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
+            <span class="text-slate-500 text-[10px] block">Trassenlänge</span>
+            <span class="font-mono text-emerald-400 font-bold">${data.laenge}</span>
+          </div>` : ''}
+
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
+            <span class="text-slate-500 text-[10px] block">Gewerk-Zuweisung</span>
+            <span class="text-slate-300 font-medium">${data.gewerk}</span>
+          </div>
+
+          ${data.belegung ? `
+          <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
+            <span class="text-slate-500 text-[10px] block">Kapazität / Belegung</span>
+            <span class="text-amber-400 font-mono">${data.belegung}</span>
+          </div>` : ''}
+        </div>
+      `;
+
+      renderInspectorActions();
+    }
+
+    // Render Actions in Inspector based on Role Permissions
+    function renderInspectorActions() {
+      const actionsContainer = document.getElementById('inspectorActions');
+      actionsContainer.innerHTML = '';
+
+      if (currentRole === 'ADMIN' || currentRole === 'PLANER') {
+        actionsContainer.innerHTML = `
+          <button onclick="alert('Bearbeiten-Modus geöffnet für ' + selectedElementData.bezeichnung)" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-1.5 rounded text-xs font-semibold border border-slate-700 transition flex items-center justify-center gap-1">
+            <i data-lucide="edit-3" class="w-3.5 h-3.5 text-sky-400"></i> Bearbeiten
+          </button>
+          <button onclick="alert('Element gelöscht')" class="w-full bg-red-950/40 hover:bg-red-900/60 text-red-300 py-1.5 rounded text-xs font-semibold border border-red-800/50 transition flex items-center justify-center gap-1">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5 text-red-400"></i> Objekt Löschen
+          </button>
+        `;
+      } else if (currentRole === 'BAULEITER') {
+        actionsContainer.innerHTML = `
+          <button onclick="alert('Baufortschritt für ' + selectedElementData.bezeichnung + ' gemeldet')" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white py-1.5 rounded text-xs font-semibold transition flex items-center justify-center gap-1">
+            <i data-lucide="check-square" class="w-3.5 h-3.5"></i> als Eingebaut quittieren
+          </button>
+        `;
+      } else {
+        actionsContainer.innerHTML = `
+          <p class="text-[11px] text-slate-500 italic text-center">Keine Bearbeitungsrechte im Viewer-Modus.</p>
+        `;
+      }
+
+      refreshIcons();
+    }
+
+    function addNewSchacht() {
+      alert('Neuer Schacht-Modi: Klicken Sie auf die Karte, um die Position festzulegen.');
+    }
+
+    function addNewTrasse() {
+      alert('Trassen-Zeichenmodus: Wählen Sie den Start- und Endschacht aus.');
+    }
+
+    function triggerExport(type) {
+      alert(`Export gestartet: ${type} Datei wird generiert...`);
+    }
+  </script>
+</body>
+</html>
