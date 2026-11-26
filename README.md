@@ -1,6 +1,6 @@
 <!-- Badges -->
-![GitHub Contributors](https://img.shields.io/github/contributors/iamfoysal/Best-Django-Admin-interface)
-![Visitors](https://api.visitorbadge.io/api/visitors?path=iamfoysal/Best-Django-Admin-interface&countColor=%23263759)
+![GitHub Contributors](https://img.shields.io/github/contributors/ajaintsch-tech/Awesome-Django-Admin-interface)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=ajaintsch-tech/Awesome-Django-Admin-interface&countColor=%23263759)
 
 # Best Django Admin Interface [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
@@ -8,55 +8,56 @@
 
 ![Django Admin](django.jpg)
 
-[![Repository](https://img.shields.io/badge/GitHub-URL-orange.svg)](https://github.com/iamfoysal/Best-Django-Admin-interface)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/iamfoysal/Best-Django-Admin-interface/blob/main/LICENSE)
+[![Repository](https://img.shields.io/badge/GitHub-URL-orange.svg)](https://github.com/ajaintsch-tech/Awesome-Django-Admin-interface)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ajaintsch-tech/Awesome-Django-Admin-interface/blob/main/LICENSE)
 
 ## Best Django Admin Interface Resources
 
+> Tags: `D x–y` = Django versions declared on PyPI · `release` = date of the latest PyPI release (checked 2026-11). Links are verified monthly by an automated link check.
 
 ### Django Admin Themes & UI Enhancements
 
-- **[django-admin-sortable2](https://github.com/jrief/django-admin-sortable2)** - Generic drag-and-drop ordering for objects in the Django admin interface. [D 4.x]
-- **[Django Jazzmin](https://github.com/farridav/django-jazzmin)** - Drop-in theme for Django admin, utilizing AdminLTE 3 & Bootstrap 4. [D >= 2]
-- **[django-admin-bootstrap](https://github.com/douglasmiranda/django-admin-bootstrap)** - Responsive Skin for Django Admin. [D 1.11, 2.1, 2.2, 3.0]
-- **[django-admin-bootstrapped](https://github.com/django-admin-bootstrapped/django-admin-bootstrapped/)** - A Django admin theme using Twitter Bootstrap. [D 1.8]
-- **[django-admin-interface](https://github.com/fabiocaccamo/django-admin-interface)** - Customizable admin interface with modern flat theme. [D 3.x, 4.x]
-- **[django-grappelli](https://github.com/sehmaschine/django-grappelli/)** - A jazzy skin for the Django Admin Interface. [D 3.2, 4.0]
-- **[django-jet](https://github.com/geex-arts/django-jet)** - Modern responsive template for the admin interface. [No versions listed, 5 yrs old]
-- **[django-jet-reboot](https://github.com/b1go/django-jet-reboot)** - Modern admin template with enhanced functionality. [D >= 3.0]
-- **[django-material](https://github.com/viewflow/django-material)** - Material design for Django Forms and Admin. [D 2.2-4.0]
-- **[django-suit](https://github.com/darklow/django-suit/)** - Modern theme for Django admin interface. [No versions listed, 4.x?]
-- **[django-wpadmin](https://github.com/barszczmm/django-wpadmin/)** - WordPress look and feel for Django admin panel. [D 1.8]
-- **[simpleui](https://github.com/newpanjing/simpleui)** - Modern theme based on Vue+Element-UI for Django admin. [D 3.0]
-- **[django-admin-vol](https://github.com/app-generator/django-admin-volt)** - Modern Bootstrap 5 Design. [No versions listed, premium]
-- **[Django Semantic](https://github.com/globophobe/django-semantic-admin)** - Free (MIT) Semantic UI admin theme. [No versions listed, recent updates]
-- **[django-baton](https://github.com/otto-torino/django-baton)** - Modern, responsive Django admin based on Bootstrap 5. [D >= 2.1]
-- **[django-adminlte2](https://github.com/adamcharnock/django-adminlte2)** - Django AdminLTE2 theme using AdminLTE3.
-- **[Black Dashboard Django](https://github.com/creativetimofficial/black-dashboard-django)** - Open-source Django Template.
-- **[Django Unfold](https://github.com/unfoldadmin/django-unfold)** - Modern Django admin theme for seamless interface development.
-- **[Django Daisy](https://github.com/hypy13/django-daisy)** - Mobile-friendly Django admin theme built with DaisyUI (TailwindCSS).
+- **[django-admin-sortable2](https://github.com/jrief/django-admin-sortable2)** - Generic drag-and-drop ordering for objects in the Django admin interface. [D 5.2–6.1 · release 2026-11]
+- **[Django Jazzmin](https://github.com/farridav/django-jazzmin)** - Drop-in theme for Django admin, utilizing AdminLTE 3 & Bootstrap 4. [D 4.2–6.0 · release 2026-06]
+- **[django-admin-interface](https://github.com/fabiocaccamo/django-admin-interface)** - Customizable admin interface with modern flat theme. [D 4.0–6.0 · release 2025-12]
+- **[django-grappelli](https://github.com/sehmaschine/django-grappelli/)** - A jazzy skin for the Django Admin Interface. [D 5.2–6.1 · release 2026-10]
+- **[django-jet-reboot](https://github.com/b1go/django-jet-reboot)** - Modern admin template with enhanced functionality. [D >= 3.0 · release 2024-09]
+- **[simpleui](https://github.com/newpanjing/simpleui)** - Modern theme based on Vue+Element-UI for Django admin. [no versions listed · release 2026-01]
+- **[django-admin-vol](https://pypi.org/project/django-admin-volt/)** - Modern Bootstrap 5 Design. [no versions listed · release 2025-05]
+- **[Django Semantic](https://github.com/globophobe/django-semantic-admin)** - Free (MIT) Semantic UI admin theme. [no versions listed · release 2026-11]
+- **[django-baton](https://github.com/otto-torino/django-baton)** - Modern, responsive Django admin based on Bootstrap 5. [D 4.2–6.1 · release 2026-11]
+- **[Black Dashboard Django](https://github.com/creativetimofficial/black-dashboard-django)** - Open-source Django Template. [template, not a package]
+- **[Django Unfold](https://github.com/unfoldadmin/django-unfold)** - Modern Django admin theme for seamless interface development. [D 5.2–6.1 · release 2026-11]
+- **[Django Daisy](https://github.com/hypy13/django-daisy)** - Mobile-friendly Django admin theme built with DaisyUI (TailwindCSS). [no versions listed · release 2026-08]
 
 ### Admin Extensions & Functional Enhancements
 
-- **[django-admin-easy](https://github.com/ebertti/django-admin-easy)** - Collection of admin fields and decorators. [D 1.x, 2.x, 3.x, 4.x]
-- **[django-admin-tools](https://github.com/django-admin-tools/django-admin-tools)** - Extensions/tools for Django administration. [D 1.1->4.0]
-- **[django-admin2](https://github.com/jazzband/django-admin2/)** - Extendable Django admin rewrite. [D 2.2+]
-- **[django-object-actions](https://github.com/crccheck/django-object-actions)** - Adds object tools for models in the admin. [D 2.1-4.2]
-- **[django-hijack](https://github.com/arteria/django-hijack/)** - Allows superusers to log in as another user. [No compatibility info, recent updates]
-- **[django-admin-env-notice](https://github.com/dizballanze/django-admin-env-notice)** - Visually distinguish environments in Django Admin. [D 1.9+]
-- **[django-mptt-admin](https://github.com/mbraak/django-mptt-admin)** - Provides a UI for managing MPTT models in Django Admin.
-- **[django-mass-edit](https://github.com/burke-software/django-mass-edit)** - Enables bulk changes in the Django admin interface.
-- **[django-admin-charts](https://github.com/PetrDlouhy/django-admin-charts)** - Create configurable charts from models and display them in Django admin.
+- **[django-admin-easy](https://github.com/ebertti/django-admin-easy)** - Collection of admin fields and decorators. [no versions listed · release 2024-08]
+- **[django-admin-tools](https://github.com/django-admin-tools/django-admin-tools)** - Extensions/tools for Django administration. [D 1.11–6.1 · release 2026-11]
+- **[django-object-actions](https://github.com/crccheck/django-object-actions)** - Adds object tools for models in the admin. [no versions listed · release 2026-05]
+- **[django-hijack](https://github.com/django-hijack/django-hijack/)** - Allows superusers to log in as another user. [D 5.2–6.1 · release 2026-10]
+- **[django-admin-env-notice](https://github.com/dizballanze/django-admin-env-notice)** - Visually distinguish environments in Django Admin. [no versions listed · release 2024-10]
+- **[django-mptt-admin](https://github.com/mbraak/django-mptt-admin)** - Provides a UI for managing MPTT models in Django Admin. [D 5.2–6.1 · release 2026-11]
+- **[django-mass-edit](https://github.com/burke-software/django-mass-edit)** - Enables bulk changes in the Django admin interface. [no versions listed · last release 2023-08]
+- **[django-admin-charts](https://github.com/PetrDlouhy/django-admin-charts)** - Create configurable charts from models and display them in Django admin. [D 5.2–6.1 · release 2026-10]
 
 ### Older or Deprecated Projects
 
 - **[django-flat-theme](https://github.com/elky/django-flat-theme)** - Modern, fresh, simple flat theme. [Included in D 1.9+!]
 - **[django-flat-responsive](https://github.com/elky/django-flat-responsive)** - Mobile-friendly extension for django-flat-theme. [Included in D 2.0+!]
-- **[django-fluent-dashboard](https://github.com/django-fluent/django-fluent-dashboard)** - Improved django-admin-tools dashboard. [D 2.2+]
-- **[django-xadmin](https://github.com/sshwsfc/xadmin/)** - Django admin replacement with plugin support. [D >=1.9, 5 yrs old]
-- **[yawd-admin](https://github.com/yawd/yawd-admin/)** - Administration website for Django. [D 1.5, 9 yrs old]
-- **[djamin](https://github.com/hersonls/djamin/)** - Alternative styling for Django admin. [No versions listed, 9 yrs old]
-- **[djangocms-admin-style](https://github.com/django-cms/djangocms-admin-style)** - Django CMS Admin Style tailored for django CMS. [D 2.2+]
+- **[django-fluent-dashboard](https://github.com/edoburu/django-fluent-dashboard)** - Improved django-admin-tools dashboard. [D 2.2–4.0 · last release 2021-11]
+- **[django-xadmin](https://github.com/sshwsfc/xadmin/)** - Django admin replacement with plugin support. [no versions listed · last release 2016-07]
+- **[yawd-admin](https://github.com/yawd/yawd-admin/)** - Administration website for Django. [D 1.5 · last release 2013-10]
+- **[djamin](https://github.com/hersonls/djamin/)** - Alternative styling for Django admin. [no versions listed · not on PyPI]
+- **[djangocms-admin-style](https://github.com/django-cms/djangocms-admin-style)** - Django CMS Admin Style tailored for django CMS. [D 2.2–5.0 · release 2024-02]
+- **[django-admin-bootstrap](https://github.com/douglasmiranda/django-admin-bootstrap)** - Responsive Skin for Django Admin. [D 1.11–3.0 · not on PyPI]
+- **[django-admin-bootstrapped](https://github.com/django-admin-bootstrapped/django-admin-bootstrapped/)** - A Django admin theme using Twitter Bootstrap. [D 1.8 · last release 2015-12]
+- **[django-jet](https://github.com/geex-arts/django-jet)** - Modern responsive template for the admin interface. [no versions listed · last release 2018-10]
+- **[django-material](https://github.com/viewflow/django-material)** - Material design for Django Forms and Admin. [D 2.2–4.0 · last release 2023-05]
+- **[django-suit](https://github.com/darklow/django-suit/)** - Modern theme for Django admin interface. [no versions listed · last release 2019-10]
+- **[django-wpadmin](https://github.com/barszczmm/django-wpadmin/)** - WordPress look and feel for Django admin panel. [D 1.8 · last release 2020-04]
+- **[django-adminlte2](https://github.com/adamcharnock/django-adminlte2)** - Django AdminLTE2 theme using AdminLTE3. [no versions listed · last release 2020-06]
+- **[django-admin2](https://github.com/jazzband/django-admin2/)** - Extendable Django admin rewrite. [no versions listed · last release 2017-01]
 
 
 <hr>
@@ -70,54 +71,51 @@
 1. **[Django REST Framework](https://www.django-rest-framework.org/)** - Web APIs for Django.  
 2. **[django-ninja](https://django-ninja.rest-framework.com/)** - Fast Django REST framework based on type annotations.  
 3. **[django-tastypie](https://django-tastypie.readthedocs.io/en/latest/)** - Creating APIs for Django apps since 2010.  
-4. **[django-rest-framework-routers](https://github.com/alanjds/drf-routers)** - Extends URL routing with auto-generated routes for models.  
-5. **[django-rest-framework-validators](https://github.com/miguelmota/django-rest-framework-validators)** - A collection of reusable validators for DRF fields.  
 
 #### **🔒 Authentication & Authorization**  
-6. **[dj-rest-auth](https://github.com/iMerica/dj-rest-auth)** - Authentication for Django Rest Framework.  
-7. **[django-rest-knox](https://github.com/James1345/django-rest-knox)** - Authentication module for `dj-rest-auth`.  
-8. **[djoser](https://github.com/sunscrapers/djoser)** - REST implementation of Django authentication.  
-9. **[django-rest-framework-simplejwt](https://github.com/jazzband/djangorestframework-simplejwt)** - JSON web tokens for DRF.  
-10. **[django-axes](https://github.com/jazzband/django-axes)** - Protects Django from brute-force login attempts.  
-11. **[django-allauth](https://github.com/pennersr/django-allauth)** - Authentication, registration, and social login integration.  
-12. **[django-guardian](https://github.com/django-guardian/django-guardian)** - Implements per-object permissions for Django models.  
+4. **[dj-rest-auth](https://github.com/iMerica/dj-rest-auth)** - Authentication for Django Rest Framework.  
+5. **[django-rest-knox](https://github.com/James1345/django-rest-knox)** - Authentication module for `dj-rest-auth`.  
+6. **[djoser](https://github.com/sunscrapers/djoser)** - REST implementation of Django authentication.  
+7. **[django-rest-framework-simplejwt](https://github.com/jazzband/djangorestframework-simplejwt)** - JSON web tokens for DRF.  
+8. **[django-axes](https://github.com/jazzband/django-axes)** - Protects Django from brute-force login attempts.  
+9. **[django-allauth](https://github.com/pennersr/django-allauth)** - Authentication, registration, and social login integration.  
+10. **[django-guardian](https://github.com/django-guardian/django-guardian)** - Implements per-object permissions for Django models.  
 
 #### **📑 API Documentation & OpenAPI Schema Generation**  
-13. **[drf-yasg](https://github.com/axnsan12/drf-yasg)** - Swagger/OpenAPI schema generation for DRF.  
-14. **[drf-spectacular](https://github.com/tfranzel/drf-spectacular)** - Sane OpenAPI 3 schema generation for DRF.  
-15. **[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger)** - Integrates DRF with Swagger documentation.  
-16. **[django-openapi-tester](https://github.com/ax3l/django-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
+11. **[drf-yasg](https://github.com/axnsan12/drf-yasg)** - Swagger/OpenAPI schema generation for DRF.  
+12. **[drf-spectacular](https://github.com/tfranzel/drf-spectacular)** - Sane OpenAPI 3 schema generation for DRF.  
+13. **[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger)** - Integrates DRF with Swagger documentation.  
+14. **[drf-openapi-tester](https://github.com/snok/drf-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
 
 #### **🌐 CORS & Webhooks**  
-17. **[django-cors-headers](https://github.com/adamchainz/django-cors-headers)** - Handles CORS when back-end and front-end are on different servers.  
-18. **[django-webhook](https://github.com/RealOrangeOne/django-webhook)** - For sending outgoing webhooks on model changes.  
+15. **[django-cors-headers](https://github.com/adamchainz/django-cors-headers)** - Handles CORS when back-end and front-end are on different servers.  
+16. **[django-webhook](https://github.com/danihodovic/django-webhook)** - For sending outgoing webhooks on model changes.  
 
 #### **🔮 GraphQL for Django**  
-19. **[graphene-django](https://github.com/graphql-python/graphene-django)** - GraphQL integration for Django.  
-20. **[graphene-django-filter](https://github.com/philipn/django-filter)** - Advanced GraphQL filters for Django with logical operators.  
-21. **[graphene-django-extras](https://github.com/FlipperPA/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
+17. **[graphene-django](https://github.com/graphql-python/graphene-django)** - GraphQL integration for Django.  
+18. **[graphene-django-filter](https://github.com/devind-team/graphene-django-filter)** - Advanced GraphQL filters for Django with logical operators.  
+19. **[graphene-django-extras](https://github.com/eamigo86/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
 
 #### **🛠️ Other Utilities**  
-22. **[djaq](https://github.com/paul-wolf/djaq)** - Instant remote API to Django models with a powerful query language.  
-23. **[django-webpack-loader](https://github.com/django-webpack/webpack-loader)** - Use Webpack with Django seamlessly.  
-24. **[django-rest-framework-multidb](https://github.com/miki725/django-rest-framework-multidb)** - Adds support for multiple databases in DRF APIs.  
+20. **[djaq](https://github.com/paul-wolf/djaq)** - Instant remote API to Django models with a powerful query language.  
+21. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Use Webpack with Django seamlessly.  
 
 ---
 
 ### **🧪 Development & Testing Tools**  
 1. **[pytest-django](https://github.com/pytest-dev/pytest-django)** - Integrates `pytest` with Django for enhanced testing.  
-2. **[factory_boy](https://github.com/marvinpinto/factory-boy)** - For generating fake data for testing and development.  
+2. **[factory_boy](https://github.com/FactoryBoy/factory_boy)** - For generating fake data for testing and development.  
 3. **[django-debug-toolbar](https://github.com/jazzband/django-debug-toolbar)** - A set of panels for debugging Django queries, templates, etc.  
 4. **[coverage.py](https://github.com/nedbat/coveragepy)** - Measures code coverage for your Django tests.  
 5. **[django-model-utils](https://github.com/jazzband/django-model-utils)** - Provides utilities for Django models, including `TimeStampedModel`, `StatusModel`, and others.  
-6. **[django-test-plus](https://github.com/dcramer/django-test-plus)** - Enhances Django’s test suite with extra utilities.  
-7. **[pytest-factoryboy](https://github.com/FactoryBoy/pytest-factoryboy)** - Integrates `factory_boy` with `pytest` for test fixtures.  
+6. **[django-test-plus](https://github.com/revsys/django-test-plus)** - Enhances Django’s test suite with extra utilities.  
+7. **[pytest-factoryboy](https://github.com/pytest-dev/pytest-factoryboy)** - Integrates `factory_boy` with `pytest` for test fixtures.  
 
 ---
 
 ### **⚡ Performance & Caching**  
 1. **[django-redis](https://github.com/jazzband/django-redis)** - Uses Redis as a caching backend for improved performance.  
-2. **[django-debug-toolbar-request-history](https://github.com/dcramer/django-debug-toolbar-request-history)** - Extends Debug Toolbar for request history tracking.  
+2. **[django-debug-toolbar-request-history](https://github.com/djsutho/django-debug-toolbar-request-history)** - Extends Debug Toolbar for request history tracking.  
 3. **[django-storages](https://github.com/jschneier/django-storages)** - Easy file storage integration for cloud services like AWS S3.  
 4. **[django-silk](https://github.com/jazzband/django-silk)** - Profiling tool for Django that tracks SQL queries, cache usage, and request times.  
 5. **[django-celery-results](https://github.com/celery/django-celery-results)** - Stores results of Celery tasks in Django's database.  
@@ -128,14 +126,13 @@
 ### **📂 File Management & Uploads**  
 1. **[django-filebrowser](https://github.com/sehmaschine/django-filebrowser)** - A file management system for easy media management in Django.  
 2. **[django-imagekit](https://github.com/matthewwithanm/django-imagekit)** - Toolkit for image processing like resizing and thumbnails.  
-3. **[django-uploadify](https://github.com/Unicron/django-uploadify)** - Provides easy file upload capabilities.  
 
 ---
 
 ### **🛡️ Security & Authentication**  
-1. **[django-secure](https://github.com/django/django-secure)** - Set of security extensions for Django to protect against XSS, CSRF, etc.  
+1. **[django-secure](https://github.com/carljm/django-secure)** - Set of security extensions for Django to protect against XSS, CSRF, etc.  
 2. **[django-two-factor-auth](https://github.com/Bouke/django-two-factor-auth)** - Adds two-factor authentication to Django apps.  
-3. **[django-passwords](https://github.com/haselkern/django-passwords)** - Provides password validation and policy enforcement.  
+3. **[django-passwords](https://github.com/dstufft/django-passwords)** - Provides password validation and policy enforcement.  
 4. **[django-otp](https://github.com/django-otp/django-otp)** - Adds support for one-time password systems in Django.
 
 ---
@@ -150,22 +147,21 @@
 ### **📊 Data Import/Export**  
 1. **[django-import-export](https://github.com/django-import-export/django-import-export)** - Import and export model data to/from formats like CSV, Excel, JSON.  
 2. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Adds multilingual fields for translating content in Django models.  
-3. **[django-data-wizard](https://github.com/django-data-wizard/django-data-wizard)** - A data import/export utility with a UI for Django.
+3. **[django-data-wizard](https://github.com/wq/django-data-wizard)** - A data import/export utility with a UI for Django.
 
 ---
 
 ### **🎨 Frontend & UI Integration**  
-1. **[django-webpack-loader](https://github.com/django-webpack/webpack-loader)** - Integrate Webpack with Django for front-end asset management.  
-2. **[django-sass](https://github.com/jrief/django-sass)** - Integrates Sass for CSS preprocessing in Django.  
+1. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Integrate Webpack with Django for front-end asset management.  
+2. **[django-sass](https://github.com/coderedcorp/django-sass)** - Integrates Sass for CSS preprocessing in Django.  
 3. **[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms)** - Better form rendering with a cleaner layout.  
 4. **[django-formtools](https://github.com/django/django-formtools)** - Provides form utilities like multi-step forms for Django.
 
 ---
 
 ### **🌍 Internationalization & Localization**  
-1. **[django-rosetta](https://github.com/jezdez/django-rosetta)** - UI for translating Django `.po` files.  
-2. **[django-localeurl](https://github.com/diacritic/django-localeurl)** - Provides automatic URL routing for multilingual websites.  
-3. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Enables multilingual fields for your models.  
+1. **[django-rosetta](https://github.com/mbi/django-rosetta)** - UI for translating Django `.po` files.  
+2. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Enables multilingual fields for your models.  
 
 ---
 
@@ -173,12 +169,12 @@
 # 🚀 **Django Learning Resources**
 
 ### 📚 **Books**  
-1. **Django 2 by Example** - [Antonio Mele](https://drive.google.com/file/d/1zZaSEaAR7U32UE27gxLZIL5jVDp06mHr/view?usp=sharing)  
-2. **Two Scoops of Django Best Practices for Django 1.8** - [Daniel Roy Greenfeld, Audrey Roy Greenfeld](https://drive.google.com/file/d/1BxLm517n4Hk0IVBCzTmCY21ejT-M1UEn/view?usp=sharing)  
-3. **Lightweight Django: Using REST, WebSockets, and Backbone** - [Julia Elman, Mark Lavin](https://drive.google.com/file/d/19Dfl6ks_heYOpB6khhkAeoEGsAM4kmUH/view?usp=sharing)  
-4. **High Performance Django** - [Baumgartner, P.; Malet, Y.](https://drive.google.com/file/d/1BUIN3FcH7_Yl1zDyMSEBZJ-seTYSEFsN/view?usp=sharing)  
-5. **Django RESTful Web Services** - [Gaston C. Hillar](https://drive.google.com/file/d/1ipgTecJawp7OQC3wrwAYU5qQB_jS4UP5/view?usp=sharing)  
-6. **Django Cookbook Web Development with Django** - [Beau Curtin](https://drive.google.com/file/d/1lzISiqbEqJP7Vs8C7k0f1XC16ChFbKug/view?usp=sharing)  
+1. **Django 2 by Example** - Antonio Mele  
+2. **Two Scoops of Django Best Practices for Django 1.8** - Daniel Roy Greenfeld, Audrey Roy Greenfeld  
+3. **Lightweight Django: Using REST, WebSockets, and Backbone** - Julia Elman, Mark Lavin  
+4. **High Performance Django** - Baumgartner, P.; Malet, Y.  
+5. **Django RESTful Web Services** - Gaston C. Hillar  
+6. **Django Cookbook Web Development with Django** - Beau Curtin  
 7. **Django ORM Cookbook** - [Agiliq](https://books.agiliq.com/projects/django-orm-cookbook/en/latest/)  
 8. **Building APIs with Django and Django Rest Framework** - [Agiliq](https://books.agiliq.com/projects/django-api-polls-tutorial/en/latest/)  
 9. **Django Admin Cookbook** - [Agiliq](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/)  
@@ -189,8 +185,6 @@
 1. **Simple is Better Than Complex** - [simpleisbetterthancomplex.com](https://simpleisbetterthancomplex.com/)  
 2. **Django Girls Tutorial** - [djangogirls](https://tutorial.djangogirls.org/en/how_the_internet_works/)  
 3. **Coding for Entrepreneurs** - [codingforentrepreneurs.com](https://www.codingforentrepreneurs.com/projects)  
-4. **Valentinog - Django REST with React** - [valentinog.com](https://www.valentinog.com/blog/tutorial-api-django-rest-react/)  
-5. **Wsvincent - Django Rest Framework with React Tutorial** - [wsvincent.com](https://wsvincent.com/django-rest-framework-react-tutorial/)  
 
 ---
 
@@ -275,8 +269,8 @@ Welcome to our curated collection of Django Admin Interface resources! This proj
 ## 🤝 Our Contributors
 We are proud of our growing community of contributors who help make this resource better every day:
 
-<a href="https://github.com/iamfoysal/Best-Django-Admin-interface/graphs/contributors">
-    <img src="https://contributors-img.web.app/image?repo=iamfoysal/Best-Django-Admin-interface" alt="Contributors" />
+<a href="https://github.com/ajaintsch-tech/Awesome-Django-Admin-interface/graphs/contributors">
+    <img src="https://contributors-img.web.app/image?repo=ajaintsch-tech/Awesome-Django-Admin-interface" alt="Contributors" />
 </a>
 
 ## 🎯 How You Can Help

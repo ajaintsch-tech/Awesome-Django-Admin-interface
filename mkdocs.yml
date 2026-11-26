@@ -1,6 +1,7 @@
 site_name: Best Django Admin Interface
+repo_url: https://github.com/ajaintsch-tech/Awesome-Django-Admin-interface
 nav:
   - Home: index.md
+  - Contributing: CONTRIBUTING.md
 theme:
   name: material
-
