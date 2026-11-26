@@ -87,38 +87,38 @@
 13. **[drf-yasg](https://github.com/axnsan12/drf-yasg)** - Swagger/OpenAPI schema generation for DRF.  
 14. **[drf-spectacular](https://github.com/tfranzel/drf-spectacular)** - Sane OpenAPI 3 schema generation for DRF.  
 15. **[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger)** - Integrates DRF with Swagger documentation.  
-16. **[django-openapi-tester](https://github.com/ax3l/django-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
+16. **[drf-openapi-tester](https://github.com/snok/drf-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
 
 #### **🌐 CORS & Webhooks**  
 17. **[django-cors-headers](https://github.com/adamchainz/django-cors-headers)** - Handles CORS when back-end and front-end are on different servers.  
-18. **[django-webhook](https://github.com/RealOrangeOne/django-webhook)** - For sending outgoing webhooks on model changes.  
+18. **[django-webhook](https://github.com/danihodovic/django-webhook)** - For sending outgoing webhooks on model changes.  
 
 #### **🔮 GraphQL for Django**  
 19. **[graphene-django](https://github.com/graphql-python/graphene-django)** - GraphQL integration for Django.  
-20. **[graphene-django-filter](https://github.com/philipn/django-filter)** - Advanced GraphQL filters for Django with logical operators.  
-21. **[graphene-django-extras](https://github.com/FlipperPA/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
+20. **[graphene-django-filter](https://github.com/devind-team/graphene-django-filter)** - Advanced GraphQL filters for Django with logical operators.  
+21. **[graphene-django-extras](https://github.com/eamigo86/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
 
 #### **🛠️ Other Utilities**  
 22. **[djaq](https://github.com/paul-wolf/djaq)** - Instant remote API to Django models with a powerful query language.  
-23. **[django-webpack-loader](https://github.com/django-webpack/webpack-loader)** - Use Webpack with Django seamlessly.  
+23. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Use Webpack with Django seamlessly.  
 24. **[django-rest-framework-multidb](https://github.com/miki725/django-rest-framework-multidb)** - Adds support for multiple databases in DRF APIs.  
 
 ---
 
 ### **🧪 Development & Testing Tools**  
 1. **[pytest-django](https://github.com/pytest-dev/pytest-django)** - Integrates `pytest` with Django for enhanced testing.  
-2. **[factory_boy](https://github.com/marvinpinto/factory-boy)** - For generating fake data for testing and development.  
+2. **[factory_boy](https://github.com/FactoryBoy/factory_boy)** - For generating fake data for testing and development.  
 3. **[django-debug-toolbar](https://github.com/jazzband/django-debug-toolbar)** - A set of panels for debugging Django queries, templates, etc.  
 4. **[coverage.py](https://github.com/nedbat/coveragepy)** - Measures code coverage for your Django tests.  
 5. **[django-model-utils](https://github.com/jazzband/django-model-utils)** - Provides utilities for Django models, including `TimeStampedModel`, `StatusModel`, and others.  
-6. **[django-test-plus](https://github.com/dcramer/django-test-plus)** - Enhances Django’s test suite with extra utilities.  
-7. **[pytest-factoryboy](https://github.com/FactoryBoy/pytest-factoryboy)** - Integrates `factory_boy` with `pytest` for test fixtures.  
+6. **[django-test-plus](https://github.com/revsys/django-test-plus)** - Enhances Django’s test suite with extra utilities.  
+7. **[pytest-factoryboy](https://github.com/pytest-dev/pytest-factoryboy)** - Integrates `factory_boy` with `pytest` for test fixtures.  
 
 ---
 
 ### **⚡ Performance & Caching**  
 1. **[django-redis](https://github.com/jazzband/django-redis)** - Uses Redis as a caching backend for improved performance.  
-2. **[django-debug-toolbar-request-history](https://github.com/dcramer/django-debug-toolbar-request-history)** - Extends Debug Toolbar for request history tracking.  
+2. **[django-debug-toolbar-request-history](https://github.com/djsutho/django-debug-toolbar-request-history)** - Extends Debug Toolbar for request history tracking.  
 3. **[django-storages](https://github.com/jschneier/django-storages)** - Easy file storage integration for cloud services like AWS S3.  
 4. **[django-silk](https://github.com/jazzband/django-silk)** - Profiling tool for Django that tracks SQL queries, cache usage, and request times.  
 5. **[django-celery-results](https://github.com/celery/django-celery-results)** - Stores results of Celery tasks in Django's database.  
@@ -134,9 +134,9 @@
 ---
 
 ### **🛡️ Security & Authentication**  
-1. **[django-secure](https://github.com/django/django-secure)** - Set of security extensions for Django to protect against XSS, CSRF, etc.  
+1. **[django-secure](https://github.com/carljm/django-secure)** - Set of security extensions for Django to protect against XSS, CSRF, etc.  
 2. **[django-two-factor-auth](https://github.com/Bouke/django-two-factor-auth)** - Adds two-factor authentication to Django apps.  
-3. **[django-passwords](https://github.com/haselkern/django-passwords)** - Provides password validation and policy enforcement.  
+3. **[django-passwords](https://github.com/dstufft/django-passwords)** - Provides password validation and policy enforcement.  
 4. **[django-otp](https://github.com/django-otp/django-otp)** - Adds support for one-time password systems in Django.
 
 ---
@@ -151,20 +151,20 @@
 ### **📊 Data Import/Export**  
 1. **[django-import-export](https://github.com/django-import-export/django-import-export)** - Import and export model data to/from formats like CSV, Excel, JSON.  
 2. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Adds multilingual fields for translating content in Django models.  
-3. **[django-data-wizard](https://github.com/django-data-wizard/django-data-wizard)** - A data import/export utility with a UI for Django.
+3. **[django-data-wizard](https://github.com/wq/django-data-wizard)** - A data import/export utility with a UI for Django.
 
 ---
 
 ### **🎨 Frontend & UI Integration**  
-1. **[django-webpack-loader](https://github.com/django-webpack/webpack-loader)** - Integrate Webpack with Django for front-end asset management.  
-2. **[django-sass](https://github.com/jrief/django-sass)** - Integrates Sass for CSS preprocessing in Django.  
+1. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Integrate Webpack with Django for front-end asset management.  
+2. **[django-sass](https://github.com/coderedcorp/django-sass)** - Integrates Sass for CSS preprocessing in Django.  
 3. **[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms)** - Better form rendering with a cleaner layout.  
 4. **[django-formtools](https://github.com/django/django-formtools)** - Provides form utilities like multi-step forms for Django.
 
 ---
 
 ### **🌍 Internationalization & Localization**  
-1. **[django-rosetta](https://github.com/jezdez/django-rosetta)** - UI for translating Django `.po` files.  
+1. **[django-rosetta](https://github.com/mbi/django-rosetta)** - UI for translating Django `.po` files.  
 2. **[django-localeurl](https://github.com/diacritic/django-localeurl)** - Provides automatic URL routing for multilingual websites.  
 3. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Enables multilingual fields for your models.  
 
