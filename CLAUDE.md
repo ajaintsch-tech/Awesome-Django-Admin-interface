@@ -5,7 +5,7 @@ The whole product is `README.md`; there is no application code.
 
 ## Structure
 - `README.md` – the list. Admin sections first, then general Django libraries, then learning resources.
-- `mkdocs.yml` – site config. CI copies `README.md`, `CONTRIBUTING.md` and `django.jpg` into `docs/` (git-ignored) and runs `mkdocs build --strict`.
+- `mkdocs.yml` – site config. CI copies `README.md` (as `index.md`), `CONTRIBUTING.md` and `django.jpg` into `docs/` (git-ignored) and runs `mkdocs build --strict`.
 - `.github/workflows/docs.yml` – builds on PRs, deploys `site/` to the `gh-pages` branch from `main`.
 - `.github/workflows/link-check.yml` – lychee link check: monthly (opens an issue), on README changes (fails the run).
 - `.lycheeignore` – URLs that block bots but work in a browser.
@@ -22,4 +22,4 @@ The whole product is `README.md`; there is no application code.
 ## Rules
 - Never delete or move an entry to "Older or Deprecated Projects" without the owner's approval – propose it in a report first.
 - Badges and repo links point to `ajaintsch-tech/Awesome-Django-Admin-interface`, not the upstream `iamfoysal` repo.
-- Verify a docs change with: `mkdir -p docs && cp README.md CONTRIBUTING.md django.jpg docs/ && mkdocs build --strict && rm -rf docs`.
+- Verify a docs change with: `mkdir -p docs && cp README.md docs/index.md && cp CONTRIBUTING.md django.jpg docs/ && mkdocs build --strict && rm -rf docs site`.

@@ -19,20 +19,13 @@
 
 - **[django-admin-sortable2](https://github.com/jrief/django-admin-sortable2)** - Generic drag-and-drop ordering for objects in the Django admin interface. [D 5.2–6.1 · release 2026-11]
 - **[Django Jazzmin](https://github.com/farridav/django-jazzmin)** - Drop-in theme for Django admin, utilizing AdminLTE 3 & Bootstrap 4. [D 4.2–6.0 · release 2026-06]
-- **[django-admin-bootstrap](https://github.com/douglasmiranda/django-admin-bootstrap)** - Responsive Skin for Django Admin. [D 1.11–3.0 · not on PyPI]
-- **[django-admin-bootstrapped](https://github.com/django-admin-bootstrapped/django-admin-bootstrapped/)** - A Django admin theme using Twitter Bootstrap. [D 1.8 · last release 2015-12]
 - **[django-admin-interface](https://github.com/fabiocaccamo/django-admin-interface)** - Customizable admin interface with modern flat theme. [D 4.0–6.0 · release 2025-12]
 - **[django-grappelli](https://github.com/sehmaschine/django-grappelli/)** - A jazzy skin for the Django Admin Interface. [D 5.2–6.1 · release 2026-10]
-- **[django-jet](https://github.com/geex-arts/django-jet)** - Modern responsive template for the admin interface. [no versions listed · last release 2018-10]
 - **[django-jet-reboot](https://github.com/b1go/django-jet-reboot)** - Modern admin template with enhanced functionality. [D >= 3.0 · release 2024-09]
-- **[django-material](https://github.com/viewflow/django-material)** - Material design for Django Forms and Admin. [D 2.2–4.0 · last release 2023-05]
-- **[django-suit](https://github.com/darklow/django-suit/)** - Modern theme for Django admin interface. [no versions listed · last release 2019-10]
-- **[django-wpadmin](https://github.com/barszczmm/django-wpadmin/)** - WordPress look and feel for Django admin panel. [D 1.8 · last release 2020-04]
 - **[simpleui](https://github.com/newpanjing/simpleui)** - Modern theme based on Vue+Element-UI for Django admin. [no versions listed · release 2026-01]
 - **[django-admin-vol](https://github.com/app-generator/django-admin-volt)** - Modern Bootstrap 5 Design. [no versions listed · release 2025-05]
 - **[Django Semantic](https://github.com/globophobe/django-semantic-admin)** - Free (MIT) Semantic UI admin theme. [no versions listed · release 2026-11]
 - **[django-baton](https://github.com/otto-torino/django-baton)** - Modern, responsive Django admin based on Bootstrap 5. [D 4.2–6.1 · release 2026-11]
-- **[django-adminlte2](https://github.com/adamcharnock/django-adminlte2)** - Django AdminLTE2 theme using AdminLTE3. [no versions listed · last release 2020-06]
 - **[Black Dashboard Django](https://github.com/creativetimofficial/black-dashboard-django)** - Open-source Django Template. [template, not a package]
 - **[Django Unfold](https://github.com/unfoldadmin/django-unfold)** - Modern Django admin theme for seamless interface development. [D 5.2–6.1 · release 2026-11]
 - **[Django Daisy](https://github.com/hypy13/django-daisy)** - Mobile-friendly Django admin theme built with DaisyUI (TailwindCSS). [no versions listed · release 2026-08]
@@ -41,7 +34,6 @@
 
 - **[django-admin-easy](https://github.com/ebertti/django-admin-easy)** - Collection of admin fields and decorators. [no versions listed · release 2024-08]
 - **[django-admin-tools](https://github.com/django-admin-tools/django-admin-tools)** - Extensions/tools for Django administration. [D 1.11–6.1 · release 2026-11]
-- **[django-admin2](https://github.com/jazzband/django-admin2/)** - Extendable Django admin rewrite. [no versions listed · last release 2017-01]
 - **[django-object-actions](https://github.com/crccheck/django-object-actions)** - Adds object tools for models in the admin. [no versions listed · release 2026-05]
 - **[django-hijack](https://github.com/django-hijack/django-hijack/)** - Allows superusers to log in as another user. [D 5.2–6.1 · release 2026-10]
 - **[django-admin-env-notice](https://github.com/dizballanze/django-admin-env-notice)** - Visually distinguish environments in Django Admin. [no versions listed · release 2024-10]
@@ -58,6 +50,14 @@
 - **[yawd-admin](https://github.com/yawd/yawd-admin/)** - Administration website for Django. [D 1.5 · last release 2013-10]
 - **[djamin](https://github.com/hersonls/djamin/)** - Alternative styling for Django admin. [no versions listed · not on PyPI]
 - **[djangocms-admin-style](https://github.com/django-cms/djangocms-admin-style)** - Django CMS Admin Style tailored for django CMS. [D 2.2–5.0 · release 2024-02]
+- **[django-admin-bootstrap](https://github.com/douglasmiranda/django-admin-bootstrap)** - Responsive Skin for Django Admin. [D 1.11–3.0 · not on PyPI]
+- **[django-admin-bootstrapped](https://github.com/django-admin-bootstrapped/django-admin-bootstrapped/)** - A Django admin theme using Twitter Bootstrap. [D 1.8 · last release 2015-12]
+- **[django-jet](https://github.com/geex-arts/django-jet)** - Modern responsive template for the admin interface. [no versions listed · last release 2018-10]
+- **[django-material](https://github.com/viewflow/django-material)** - Material design for Django Forms and Admin. [D 2.2–4.0 · last release 2023-05]
+- **[django-suit](https://github.com/darklow/django-suit/)** - Modern theme for Django admin interface. [no versions listed · last release 2019-10]
+- **[django-wpadmin](https://github.com/barszczmm/django-wpadmin/)** - WordPress look and feel for Django admin panel. [D 1.8 · last release 2020-04]
+- **[django-adminlte2](https://github.com/adamcharnock/django-adminlte2)** - Django AdminLTE2 theme using AdminLTE3. [no versions listed · last release 2020-06]
+- **[django-admin2](https://github.com/jazzband/django-admin2/)** - Extendable Django admin rewrite. [no versions listed · last release 2017-01]
 
 
 <hr>
