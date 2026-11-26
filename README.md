@@ -23,7 +23,7 @@
 - **[django-grappelli](https://github.com/sehmaschine/django-grappelli/)** - A jazzy skin for the Django Admin Interface. [D 5.2–6.1 · release 2026-10]
 - **[django-jet-reboot](https://github.com/b1go/django-jet-reboot)** - Modern admin template with enhanced functionality. [D >= 3.0 · release 2024-09]
 - **[simpleui](https://github.com/newpanjing/simpleui)** - Modern theme based on Vue+Element-UI for Django admin. [no versions listed · release 2026-01]
-- **[django-admin-vol](https://github.com/app-generator/django-admin-volt)** - Modern Bootstrap 5 Design. [no versions listed · release 2025-05]
+- **[django-admin-vol](https://pypi.org/project/django-admin-volt/)** - Modern Bootstrap 5 Design. [no versions listed · release 2025-05]
 - **[Django Semantic](https://github.com/globophobe/django-semantic-admin)** - Free (MIT) Semantic UI admin theme. [no versions listed · release 2026-11]
 - **[django-baton](https://github.com/otto-torino/django-baton)** - Modern, responsive Django admin based on Bootstrap 5. [D 4.2–6.1 · release 2026-11]
 - **[Black Dashboard Django](https://github.com/creativetimofficial/black-dashboard-django)** - Open-source Django Template. [template, not a package]
@@ -71,37 +71,34 @@
 1. **[Django REST Framework](https://www.django-rest-framework.org/)** - Web APIs for Django.  
 2. **[django-ninja](https://django-ninja.rest-framework.com/)** - Fast Django REST framework based on type annotations.  
 3. **[django-tastypie](https://django-tastypie.readthedocs.io/en/latest/)** - Creating APIs for Django apps since 2010.  
-4. **[django-rest-framework-routers](https://github.com/alanjds/drf-routers)** - Extends URL routing with auto-generated routes for models.  
-5. **[django-rest-framework-validators](https://github.com/miguelmota/django-rest-framework-validators)** - A collection of reusable validators for DRF fields.  
 
 #### **🔒 Authentication & Authorization**  
-6. **[dj-rest-auth](https://github.com/iMerica/dj-rest-auth)** - Authentication for Django Rest Framework.  
-7. **[django-rest-knox](https://github.com/James1345/django-rest-knox)** - Authentication module for `dj-rest-auth`.  
-8. **[djoser](https://github.com/sunscrapers/djoser)** - REST implementation of Django authentication.  
-9. **[django-rest-framework-simplejwt](https://github.com/jazzband/djangorestframework-simplejwt)** - JSON web tokens for DRF.  
-10. **[django-axes](https://github.com/jazzband/django-axes)** - Protects Django from brute-force login attempts.  
-11. **[django-allauth](https://github.com/pennersr/django-allauth)** - Authentication, registration, and social login integration.  
-12. **[django-guardian](https://github.com/django-guardian/django-guardian)** - Implements per-object permissions for Django models.  
+4. **[dj-rest-auth](https://github.com/iMerica/dj-rest-auth)** - Authentication for Django Rest Framework.  
+5. **[django-rest-knox](https://github.com/James1345/django-rest-knox)** - Authentication module for `dj-rest-auth`.  
+6. **[djoser](https://github.com/sunscrapers/djoser)** - REST implementation of Django authentication.  
+7. **[django-rest-framework-simplejwt](https://github.com/jazzband/djangorestframework-simplejwt)** - JSON web tokens for DRF.  
+8. **[django-axes](https://github.com/jazzband/django-axes)** - Protects Django from brute-force login attempts.  
+9. **[django-allauth](https://github.com/pennersr/django-allauth)** - Authentication, registration, and social login integration.  
+10. **[django-guardian](https://github.com/django-guardian/django-guardian)** - Implements per-object permissions for Django models.  
 
 #### **📑 API Documentation & OpenAPI Schema Generation**  
-13. **[drf-yasg](https://github.com/axnsan12/drf-yasg)** - Swagger/OpenAPI schema generation for DRF.  
-14. **[drf-spectacular](https://github.com/tfranzel/drf-spectacular)** - Sane OpenAPI 3 schema generation for DRF.  
-15. **[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger)** - Integrates DRF with Swagger documentation.  
-16. **[drf-openapi-tester](https://github.com/snok/drf-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
+11. **[drf-yasg](https://github.com/axnsan12/drf-yasg)** - Swagger/OpenAPI schema generation for DRF.  
+12. **[drf-spectacular](https://github.com/tfranzel/drf-spectacular)** - Sane OpenAPI 3 schema generation for DRF.  
+13. **[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger)** - Integrates DRF with Swagger documentation.  
+14. **[drf-openapi-tester](https://github.com/snok/drf-openapi-tester)** - Automatically tests your APIs with OpenAPI specifications.  
 
 #### **🌐 CORS & Webhooks**  
-17. **[django-cors-headers](https://github.com/adamchainz/django-cors-headers)** - Handles CORS when back-end and front-end are on different servers.  
-18. **[django-webhook](https://github.com/danihodovic/django-webhook)** - For sending outgoing webhooks on model changes.  
+15. **[django-cors-headers](https://github.com/adamchainz/django-cors-headers)** - Handles CORS when back-end and front-end are on different servers.  
+16. **[django-webhook](https://github.com/danihodovic/django-webhook)** - For sending outgoing webhooks on model changes.  
 
 #### **🔮 GraphQL for Django**  
-19. **[graphene-django](https://github.com/graphql-python/graphene-django)** - GraphQL integration for Django.  
-20. **[graphene-django-filter](https://github.com/devind-team/graphene-django-filter)** - Advanced GraphQL filters for Django with logical operators.  
-21. **[graphene-django-extras](https://github.com/eamigo86/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
+17. **[graphene-django](https://github.com/graphql-python/graphene-django)** - GraphQL integration for Django.  
+18. **[graphene-django-filter](https://github.com/devind-team/graphene-django-filter)** - Advanced GraphQL filters for Django with logical operators.  
+19. **[graphene-django-extras](https://github.com/eamigo86/graphene-django-extras)** - Extends graphene-django with extra features like full-text search.  
 
 #### **🛠️ Other Utilities**  
-22. **[djaq](https://github.com/paul-wolf/djaq)** - Instant remote API to Django models with a powerful query language.  
-23. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Use Webpack with Django seamlessly.  
-24. **[django-rest-framework-multidb](https://github.com/miki725/django-rest-framework-multidb)** - Adds support for multiple databases in DRF APIs.  
+20. **[djaq](https://github.com/paul-wolf/djaq)** - Instant remote API to Django models with a powerful query language.  
+21. **[django-webpack-loader](https://github.com/django-webpack/django-webpack-loader)** - Use Webpack with Django seamlessly.  
 
 ---
 
@@ -129,7 +126,6 @@
 ### **📂 File Management & Uploads**  
 1. **[django-filebrowser](https://github.com/sehmaschine/django-filebrowser)** - A file management system for easy media management in Django.  
 2. **[django-imagekit](https://github.com/matthewwithanm/django-imagekit)** - Toolkit for image processing like resizing and thumbnails.  
-3. **[django-uploadify](https://github.com/Unicron/django-uploadify)** - Provides easy file upload capabilities.  
 
 ---
 
@@ -165,8 +161,7 @@
 
 ### **🌍 Internationalization & Localization**  
 1. **[django-rosetta](https://github.com/mbi/django-rosetta)** - UI for translating Django `.po` files.  
-2. **[django-localeurl](https://github.com/diacritic/django-localeurl)** - Provides automatic URL routing for multilingual websites.  
-3. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Enables multilingual fields for your models.  
+2. **[django-modeltranslation](https://github.com/deschler/django-modeltranslation)** - Enables multilingual fields for your models.  
 
 ---
 
@@ -174,12 +169,12 @@
 # 🚀 **Django Learning Resources**
 
 ### 📚 **Books**  
-1. **Django 2 by Example** - [Antonio Mele](https://drive.google.com/file/d/1zZaSEaAR7U32UE27gxLZIL5jVDp06mHr/view?usp=sharing)  
-2. **Two Scoops of Django Best Practices for Django 1.8** - [Daniel Roy Greenfeld, Audrey Roy Greenfeld](https://drive.google.com/file/d/1BxLm517n4Hk0IVBCzTmCY21ejT-M1UEn/view?usp=sharing)  
-3. **Lightweight Django: Using REST, WebSockets, and Backbone** - [Julia Elman, Mark Lavin](https://drive.google.com/file/d/19Dfl6ks_heYOpB6khhkAeoEGsAM4kmUH/view?usp=sharing)  
-4. **High Performance Django** - [Baumgartner, P.; Malet, Y.](https://drive.google.com/file/d/1BUIN3FcH7_Yl1zDyMSEBZJ-seTYSEFsN/view?usp=sharing)  
-5. **Django RESTful Web Services** - [Gaston C. Hillar](https://drive.google.com/file/d/1ipgTecJawp7OQC3wrwAYU5qQB_jS4UP5/view?usp=sharing)  
-6. **Django Cookbook Web Development with Django** - [Beau Curtin](https://drive.google.com/file/d/1lzISiqbEqJP7Vs8C7k0f1XC16ChFbKug/view?usp=sharing)  
+1. **Django 2 by Example** - Antonio Mele  
+2. **Two Scoops of Django Best Practices for Django 1.8** - Daniel Roy Greenfeld, Audrey Roy Greenfeld  
+3. **Lightweight Django: Using REST, WebSockets, and Backbone** - Julia Elman, Mark Lavin  
+4. **High Performance Django** - Baumgartner, P.; Malet, Y.  
+5. **Django RESTful Web Services** - Gaston C. Hillar  
+6. **Django Cookbook Web Development with Django** - Beau Curtin  
 7. **Django ORM Cookbook** - [Agiliq](https://books.agiliq.com/projects/django-orm-cookbook/en/latest/)  
 8. **Building APIs with Django and Django Rest Framework** - [Agiliq](https://books.agiliq.com/projects/django-api-polls-tutorial/en/latest/)  
 9. **Django Admin Cookbook** - [Agiliq](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/)  
@@ -190,8 +185,6 @@
 1. **Simple is Better Than Complex** - [simpleisbetterthancomplex.com](https://simpleisbetterthancomplex.com/)  
 2. **Django Girls Tutorial** - [djangogirls](https://tutorial.djangogirls.org/en/how_the_internet_works/)  
 3. **Coding for Entrepreneurs** - [codingforentrepreneurs.com](https://www.codingforentrepreneurs.com/projects)  
-4. **Valentinog - Django REST with React** - [valentinog.com](https://www.valentinog.com/blog/tutorial-api-django-rest-react/)  
-5. **Wsvincent - Django Rest Framework with React Tutorial** - [wsvincent.com](https://wsvincent.com/django-rest-framework-react-tutorial/)  
 
 ---
 
